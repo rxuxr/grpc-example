@@ -1,14 +1,14 @@
 {
-  "name": "grpc-server",
+  "name": "grpc-client",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/grpc-server/src",
+  "sourceRoot": "apps/grpc-client/src",
   "projectType": "application",
   "targets": {
     "start:dev": {
       "executor": "nx:run-commands",
       "options": {
         "commands": ["nest start --watch"],
-        "cwd": "apps/grpc-server",
+        "cwd": "apps/grpc-client",
         "parallel": false
       }
     },
@@ -18,11 +18,11 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/grpc-server",
-        "main": "apps/grpc-server/src/main.ts",
-        "tsConfig": "apps/grpc-server/tsconfig.app.json",
-        "assets": ["apps/grpc-server/src/assets"],
-        "webpackConfig": "apps/grpc-server/webpack.config.js"
+        "outputPath": "dist/apps/grpc-client",
+        "main": "apps/grpc-client/src/main.ts",
+        "tsConfig": "apps/grpc-client/tsconfig.app.json",
+        "assets": ["apps/grpc-client/src/assets"],
+        "webpackConfig": "apps/grpc-client/webpack.config.js"
       },
       "configurations": {
         "production": {
@@ -35,11 +35,11 @@
     "serve": {
       "executor": "@nrwl/js:node",
       "options": {
-        "buildTarget": "grpc-server:build"
+        "buildTarget": "grpc-client:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "grpc-server:build:production"
+          "buildTarget": "grpc-client:build:production"
         }
       }
     },
@@ -47,14 +47,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/grpc-server/**/*.ts"]
+        "lintFilePatterns": ["apps/grpc-client/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/grpc-server/jest.config.ts",
+        "jestConfig": "apps/grpc-client/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {

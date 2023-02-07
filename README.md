@@ -6,7 +6,10 @@
 
 ## Development server
 
-Run `nx serve grpc-server` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `nx run grpc-server:start:dev` for a dev server.
+
+## gRPC client
+Run `yarn nx run grpc-client:start:dev` to start the client app in dev mode.
 
 ## Understand this workspace
 

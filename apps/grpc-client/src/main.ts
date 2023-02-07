@@ -1,0 +1,41 @@
+import { NestFactory } from '@nestjs/core';
+import { MicroserviceOptions } from '@nestjs/microservices';
+import { AppModule } from './app/app.module';
+import GrpcClientService from './app/grpc-client.service';
+import { grpcClientOptions } from './grpc-client.options';
+
+const launch = async () => {
+  const app = await NestFactory.createApplicationContext(AppModule);
+  const grpcClientService = app.get(GrpcClientService);
+  // eslint-disable-next-line no-constant-condition
+  await grpcClientService.run();
+};
+
+// eslint-disable-next-line no-constant-condition
+
+launch();
+// console.log('end!');
+
+// async function bootstrap() {
+//   /**
+//    * This example contains a hybrid application (HTTP + gRPC)
+//    * You can switch to a microservice with NestFactory.createMicroservice() as follows:
+//    *
+//    * const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+//    *  transport: Transport.GRPC,
+//    *  options: {
+//    *    package: 'hero',
+//    *    protoPath: join(__dirname, './hero/hero.proto'),
+//    *  }
+//    * });
+//    * await app.listen();
+//    *
+//    */
+//   const app = await NestFactory.create(AppModule);
+//   // app.connectMicroservice<MicroserviceOptions>(grpcClientOptions);
+
+//   await app.startAllMicroservices();
+//   await app.listen(3002);
+//   console.log(`Application is running on: ${await app.getUrl()}`);
+// }
+// bootstrap();
